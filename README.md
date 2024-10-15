@@ -122,7 +122,7 @@ This setup ensures that when you are working inside the `work` or `personal` dir
 
 ---
 
-### Step 3 Onwards is for Multiple GitHub SSH Credentials
+### Step 3 Onwards - Multiple GitHub SSH Credentials
 
 ---
 

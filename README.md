@@ -126,7 +126,7 @@ This setup ensures that when you are working inside the `work` or `personal` dir
 
 ---
 
-### 3. **SSH Configuration (GITHUB)**
+### 3. **SSH Configuration**
 
 Configure SSH to use different SSH keys for your work and personal Git accounts using aliases in `~/.ssh/config`.
 

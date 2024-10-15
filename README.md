@@ -73,3 +73,141 @@ Demo repo for git.
    - `gh repo clone <repository-name>`: Clone a GitHub repository.
    - `gh pr create`: Create a pull request.
    - `gh pr merge <pr-number>`: Merge a pull request.
+
+---
+---
+
+## Extra - Miltiple Git User & Multiple Github SSH Credential
+
+### 1. **Design Directories**
+
+Set up separate directories for your work and personal profiles to keep configurations organized.
+
+- **Work directory**: `~/projects/work`
+- **Personal directory**: `~/projects/personal`
+
+Inside each directory, create a `.gitconfig` file with the profile-specific settings:
+
+#### **Work configuration (`~/projects/work/.gitconfig`)**
+
+```ini
+[user]
+  name = Your Work Name
+  email = your.work.email@example.com
+```
+
+#### **Personal configuration (`~/projects/personal/.gitconfig`)**
+
+```ini
+[user]
+  name = Your Personal Name
+  email = your.personal.email@example.com
+```
+
+---
+
+### 2. **Modify Global `~/.gitconfig`**
+
+Modify your global `~/.gitconfig` to include profile-specific configurations based on the directory you're working in:
+
+```ini
+[includeIf "gitdir:~/projects/work/"]
+  path = ~/projects/work/.gitconfig
+
+[includeIf "gitdir:~/projects/personal/"]
+  path = ~/projects/personal/.gitconfig
+```
+
+This setup ensures that when you are working inside the `work` or `personal` directories, Git uses the correct profile (name and email).
+
+---
+
+### This point onwards: GitHub Multiple SSH Credentials for Multiple Accounts
+
+The following steps guide you in setting up and managing multiple SSH credentials for different GitHub accounts.
+
+---
+
+### 3. **SSH Configuration (GITHUB)**
+
+Configure SSH to use different SSH keys for your work and personal Git accounts using aliases in `~/.ssh/config`.
+
+#### 3.1. **Generate SSH Keys for Each Profile**
+
+Generate a unique SSH key for each account:
+
+- **Work**:
+
+  ```bash
+  ssh-keygen -t rsa -C "your.work.email@example.com" -f ~/.ssh/id_rsa_work
+  ```
+
+- **Personal**:
+
+  ```bash
+  ssh-keygen -t rsa -C "your.personal.email@example.com" -f ~/.ssh/id_rsa_personal
+  ```
+
+#### 3.2. **Modify `~/.ssh/config`**
+
+Configure the SSH aliases to tell SSH which key to use for each account:
+
+- Open or create `~/.ssh/config` and add the following:
+  
+  ```ini
+  # Work GitHub account
+  Host github-work
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_work
+
+  # Personal GitHub account
+  Host github-personal
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa_personal
+  ```
+
+This configuration ensures that SSH uses the correct identity file (SSH key) for each account based on the alias (`github-work` or `github-personal`).
+
+---
+
+### 4. **Verify SSH Connection**
+
+To verify that your SSH keys are correctly configured for each account, use the following commands:
+
+- **For Work**:
+
+  ```bash
+  ssh -T git@github-work
+  ```
+
+- **For Personal**:
+
+  ```bash
+  ssh -T git@github-personal
+  ```
+
+If successful, you should receive a message indicating that you've successfully authenticated.
+
+---
+
+### 5. **Using SSH Aliases to Clone Repositories**
+
+When cloning repositories, use the SSH alias corresponding to the account you want to use:
+
+- **For Work**:
+
+  ```bash
+  git clone git@github-work:username/work-repo.git
+  ```
+
+- **For Personal**:
+
+  ```bash
+  git clone git@github-personal:username/personal-repo.git
+  ```
+
+This ensures that the correct SSH key is used for each profile when interacting with GitHub.
+
+---

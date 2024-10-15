@@ -48,6 +48,7 @@ Demo repo for git.
 
    - `git push origin <branch-name>`: Push local changes to the remote repository.
    - `git pull origin <branch-name>`: Fetch and merge changes from the remote repository.
+   - `git push -u origin <branch-name>`: Push current branch to remote branch, and set remote branch as upstream (Will be able to git push withuot specifying  `origin <branch-name>`)
 
 2. **Managing Remote Repositories**
 

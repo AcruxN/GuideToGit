@@ -1,6 +1,4 @@
-# demoGit
-
-Demo repo for git.
+# Guide to Git
 
 ## Git Commands (Local)
 

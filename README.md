@@ -75,7 +75,7 @@
 ---
 ---
 
-## Extra - Miltiple Git User & Multiple Github Account SSH Credential
+## Extra - Multiple Git User & Multiple Github Account SSH Credential
 
 ### 1. **Design Directories**
 

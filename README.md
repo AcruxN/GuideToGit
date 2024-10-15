@@ -186,6 +186,38 @@ To verify that your SSH keys are correctly configured for each account, use the 
 
 If successful, you should receive a message indicating that you've successfully authenticated.
 
+#### Common Error: Git on Windows Uses its Own SSH Client
+
+- Git is not using the expected SSH keys or configurations.
+- SSH-related Git commands behave differently when run in Git Bash compared to running them in PowerShell or Command Prompt.
+
+Error Example: When running a Git command, you might see:
+
+```bash
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+#### Solution: Specify SSH Path for Git
+
+1. Modify your global `~/.gitconfig`:
+
+   Add the following line to your global .gitconfig file to set the SSH client explicitly:
+
+   ```bash
+   [core]
+   sshCommand = "C:/Windows/System32/OpenSSH/ssh.exe"
+   ```
+
+2. Alternative path (if OpenSSH is installed in a different directory):
+
+   If you installed OpenSSH in a custom location, adjust the path accordingly:
+
+   ```bash
+   [core]
+   sshCommand = "C:/Path/To/Your/ssh.exe"
+   ```
+
 ---
 
 ### 5. **Using SSH Aliases to Clone Repositories**

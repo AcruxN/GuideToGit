@@ -77,7 +77,7 @@ Demo repo for git.
 ---
 ---
 
-## Extra - Miltiple Git User & Multiple Github SSH Credential
+## Extra - Miltiple Git User & Multiple Github Account SSH Credential
 
 ### 1. **Design Directories**
 
@@ -122,9 +122,7 @@ This setup ensures that when you are working inside the `work` or `personal` dir
 
 ---
 
-### This point onwards: GitHub Multiple SSH Credentials for Multiple Accounts
-
-The following steps guide you in setting up and managing multiple SSH credentials for different GitHub accounts.
+### Step 3 Onwards is for Multiple GitHub SSH Credentials
 
 ---
 

@@ -142,7 +142,7 @@ Generate a unique SSH key for each account:
   ssh-keygen -t rsa -C "your.personal.email@example.com" -f ~/.ssh/id_rsa_personal
   ```
 
-#### 3.2. **Modify / Create `~/.ssh/config`**
+#### 3.2. **Modify `~/.ssh/config`**
 
 Configure the SSH aliases to tell SSH which key to use for each account:
 
